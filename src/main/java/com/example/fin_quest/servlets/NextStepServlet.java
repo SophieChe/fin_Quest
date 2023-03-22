@@ -1,5 +1,7 @@
 package com.example.fin_quest.servlets;
 
+import com.example.fin_quest.entities.Question;
+import com.example.fin_quest.services.QuestService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -9,19 +11,17 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "NextStepServlet", value = "/nextStep")
 public class NextStepServlet extends HttpServlet {
+    QuestService questService =  new QuestService();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       String answer = request.getParameter("answer");
+        Question question = questService.getQuestion(Integer.parseInt(answer));
+         String question1 = question.getQuestion();
+         request.setAttribute("question", question1);
+         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/question.jsp");
+         requestDispatcher.forward(request, response);
 
-        String answer = request.getParameter("answer");
-
-        /*создать класс с картой, куда помместить ключ - номер, значение - новое сообщение и метод с параметром,
-        который по параметру будет искать нужное следующее сообщение квеста
-        сделать здесь объект того класса и вызвать метод, куда передать номер,выбранного шага.
-         Получить номер шага -  взять из response  ответ и  через карту найти его номер*/
-
-        PrintWriter writer = response.getWriter();
-        writer.write("<html><body>" + "Какой-то ответ" + "</body></html>");
-        writer.flush();
     }
 
     @Override
