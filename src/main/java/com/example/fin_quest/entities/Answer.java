@@ -2,11 +2,12 @@ package com.example.fin_quest.entities;
 
 public class Answer {
     private int id;
-    private String answer;
+    private String text;
+    private Question nextQuestion;
 
     public Answer(int id, String answer) {
         this.id = id;
-        this.answer = answer;
+        this.text = answer;
     }
 
     public Question getNextQuestion() {
@@ -17,8 +18,6 @@ public class Answer {
         this.nextQuestion = nextQuestion;
     }
 
-    private Question nextQuestion;
-
     public int getId() {
         return id;
     }
@@ -27,11 +26,11 @@ public class Answer {
         this.id = id;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getText() {
+        return text;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setText(String text) {
+        this.text = text;
     }
 }

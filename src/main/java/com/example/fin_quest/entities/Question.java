@@ -16,7 +16,7 @@ public class Question {
     public void setId(int id) {
         this.id = id;
     }
-    public String getQuestion() {
+    public String getText() {
         return question;
     }
     public void setQuestion(String question) {
