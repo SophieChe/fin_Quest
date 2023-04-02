@@ -5,7 +5,7 @@ import com.example.fin_quest.entities.Quest;
 import com.example.fin_quest.entities.Question;
 import com.example.fin_quest.repository.QuestRepository;
 
-
+//java.util.logging.Logger log = java.util.logging.Logger.getLogger(LoggingJul.class.getName());
 import java.util.List;
 
 

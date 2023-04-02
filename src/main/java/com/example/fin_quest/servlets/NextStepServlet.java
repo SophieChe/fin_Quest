@@ -8,6 +8,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "NextStepServlet", value = "/nextStep")
 public class NextStepServlet extends HttpServlet {
@@ -15,10 +16,22 @@ public class NextStepServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String answer = request.getParameter("answer");
         Question question = questService.getQuestion(Integer.parseInt(answer));
         String questionText = question.getText();
         request.setAttribute("questionText", questionText);
+
+        if(questionText.equals("Ты потерял память. Принять вызов НЛО?")){
+            HttpSession session = request.getSession();
+            Integer count = (Integer) session.getAttribute("count");
+            if (count == null) {
+                session.setAttribute("count", 1);
+                count = 1;
+            } else {
+                session.setAttribute("count", count +1 );
+            }
+        }
 
         Answer answer1 = question.getAnswers().get(0);
         Answer answer2 = question.getAnswers().get(1);
@@ -32,9 +45,8 @@ public class NextStepServlet extends HttpServlet {
         request.setAttribute("answer1Text", answer1Text);
         request.setAttribute("answer2Text", answer2Text);
 
-        request.setAttribute("answer1Id", answer1ID);
-        request.setAttribute("answer2Id", answer2ID);
-
+        request.setAttribute("answer1ID", answer1ID);
+        request.setAttribute("answer2ID", answer2ID);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/question.jsp");
          requestDispatcher.forward(request, response);

@@ -15,8 +15,9 @@ public class QuestRepository {
         Answer answer4 = new Answer(4, "Отказаться подниматься на мостик");
         Answer answer5 = new Answer(5, "Рассказать правду о себе");
         Answer answer6 = new Answer(6, "Солгать о себе");
-        Answer answer9 = new Answer(9, "WIN");
-        Answer answer10 = new Answer(10, "Game over");
+        Answer answer9 = new Answer(9, "WIN! Начать игру заново?");
+        Answer answer10 = new Answer(10, "Game over! Начать игру заново?");
+        Answer answer11 = new Answer(11, "");
 
         Question question1 = new Question(1, "Ты потерял память. Принять вызов НЛО?",
                 List.of(answer1, answer2));
@@ -25,13 +26,13 @@ public class QuestRepository {
         Question question3 = new Question(3, "Ты поднялся на мостик. Ты кто?",
                 List.of(answer5, answer6));
         Question question4 = new Question(4, "Ты отклонил вызов. Поражение",
-                List.of(answer10, answer10));
+                List.of(answer10,answer11));
         Question question5 = new Question(5, "Ты не пошел на переговоры. Поражение",
-                List.of(answer10, answer10));
+                List.of(answer10,answer11));
         Question question6 = new Question(6, "Тебя вернули домой. Победа",
-                List.of(answer9, answer9));
+                List.of(answer9,answer11));
         Question question7 = new Question(7, "Твою ложь разоблачили. Поражение",
-                List.of(answer10, answer10));
+                List.of(answer10,answer11));
 
         answer1.setNextQuestion(question2);
         answer2.setNextQuestion(question4);
@@ -39,7 +40,9 @@ public class QuestRepository {
         answer4.setNextQuestion(question5);
         answer5.setNextQuestion(question6);
         answer6.setNextQuestion(question7);
-        answer10.setNextQuestion(question4);
+        answer9.setNextQuestion(question1);
+        answer10.setNextQuestion(question1);
+        answer11.setNextQuestion(question1);
 
         List<Question> questions = new ArrayList<>();
         questions.add(question1);

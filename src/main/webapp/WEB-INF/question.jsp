@@ -22,5 +22,15 @@
         <button type="SUBMIT">Ответить</button>
     </p>
 </form>
+    <br>
+    <br>
+    <br>
+    <h3>${requestScope.count}</h3>
+    <p>
+        <% Integer number= (Integer) session.getAttribute("count");%>
+    </p>
+        <h4>Количество стартов квеста: </h4><p><%=number%></p>
+
+
 </body>
 </html>
