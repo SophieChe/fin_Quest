@@ -10,10 +10,14 @@ import java.util.List;
 
 
 public class QuestService {
+    private final QuestRepository questRepository;
 
-    Quest quest1 = new QuestRepository().getQuest();
+    public QuestService(QuestRepository questRepository) {
+        this.questRepository = questRepository;
+    }
+
     public Question getQuestion(int answerID){
-
+        Quest quest1 = questRepository.getQuest();
         Question nextQuestion = null;
 
         List<Question> questions = quest1.getQuesions();

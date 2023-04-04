@@ -1,7 +1,9 @@
 package com.example.fin_quest.servlets;
 
 import com.example.fin_quest.entities.Answer;
+import com.example.fin_quest.entities.Quest;
 import com.example.fin_quest.entities.Question;
+import com.example.fin_quest.repository.QuestRepository;
 import com.example.fin_quest.services.QuestService;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -12,7 +14,7 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "NextStepServlet", value = "/nextStep")
 public class NextStepServlet extends HttpServlet {
-    QuestService questService =  new QuestService();
+    QuestService questService =  new QuestService(new QuestRepository(new Quest()));
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
