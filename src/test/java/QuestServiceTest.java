@@ -1,14 +1,15 @@
-package com.example.fin_quest.services;
-
 import com.example.fin_quest.entities.Answer;
 import com.example.fin_quest.entities.Quest;
 import com.example.fin_quest.entities.Question;
 import com.example.fin_quest.repository.QuestRepository;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+import com.example.fin_quest.services.QuestService;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class QuestServiceTest {
